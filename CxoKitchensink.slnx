@@ -1,0 +1,17 @@
+<Solution>
+  <Folder Name="/examples/" />
+  <Folder Name="/examples/acme-internet/">
+    <Project Path="examples/acme-internet/Acme.Cli/Acme.Cli.csproj" />
+    <Project Path="examples/acme-internet/Acme.Listener/Acme.Listener.csproj" />
+    <Project Path="examples/acme-internet/Acme.Shared/Acme.Shared.csproj" />
+    <Project Path="examples/acme-internet/Acme.Workers/Acme.Workers.csproj" />
+  </Folder>
+  <Folder Name="/examples/acme-vpn/">
+    <Project Path="examples/acme-vpn/AcmeVpn.Cli/AcmeVpn.Cli.csproj" />
+    <Project Path="examples/acme-vpn/AcmeVpn.Shared/AcmeVpn.Shared.csproj" />
+    <Project Path="examples/acme-vpn/AcmeVpn.Workers/AcmeVpn.Workers.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Cxo.Clients/Cxo.Clients.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,46 @@
+# Runs the example applications next to CxO, inside its Docker network, so that CxO can deliver notifications
+# to them by name. The command-line tools keep running on your machine.
+#
+#   docker compose --profile internet up --build                 # Acme Internet: workers and order listener
+#   docker compose --profile internet up --build acme-listener   # Acme Internet: only the order listener
+#   docker compose --profile vpn up --build                      # Acme VPN: workers
+#
+# Needs Cxo__ClientSecret in the environment (see the README). The defaults are the reference deployment's;
+# override them with the variables below for another CxO environment.
+
+x-cxo: &cxo
+  networks: [cxo]
+  restart: unless-stopped
+  environment: &cxo-environment
+    Cxo__GatewayUrl: ${CXO_GATEWAY_URL:-http://cxo-tmf-api-gateway:8080}
+    Cxo__TokenUrl: ${CXO_TOKEN_URL:-http://local.keycloak.codaxy-cxo:8080/realms/Codaxy/protocol/openid-connect/token}
+    Cxo__ClientId: ${Cxo__ClientId:-acme-integrator}
+    Cxo__ClientSecret: ${Cxo__ClientSecret:-}
+    Conductor__BaseUrl: ${CXO_WORKFLOW_ENGINE_URL:-http://cxo-conductor:8080}
+
+services:
+  acme-workers:
+    <<: *cxo
+    profiles: [internet]
+    build: { context: ., args: { PROJECT: examples/acme-internet/Acme.Workers, ASSEMBLY: Acme.Workers } }
+
+  acme-listener:
+    <<: *cxo
+    profiles: [internet]
+    build: { context: ., args: { PROJECT: examples/acme-internet/Acme.Listener, ASSEMBLY: Acme.Listener } }
+    environment:
+      <<: *cxo-environment
+      Listener__CallbackUrl: http://acme-listener:5641/tmf641
+
+  acme-vpn-workers:
+    <<: *cxo
+    profiles: [vpn]
+    build: { context: ., args: { PROJECT: examples/acme-vpn/AcmeVpn.Workers, ASSEMBLY: AcmeVpn.Workers } }
+    environment:
+      <<: *cxo-environment
+      Listener__CallbackUrl: http://acme-vpn-workers:5652/tmf652
+
+networks:
+  cxo:
+    external: true
+    name: ${CXO_NETWORK:-cxo_network}

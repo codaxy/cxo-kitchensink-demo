@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="TmfApiClients" />
+    <PackageReference Include="ServiceActivationManagement.TmfApiClient" />
+    <PackageReference Include="ServiceOrderingEngineApiClient" />
+    <PackageReference Include="ResourceOrderingEngineApiClient" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" />
+    <PackageReference Include="Microsoft.Extensions.Http" />
+  </ItemGroup>
+
+</Project>

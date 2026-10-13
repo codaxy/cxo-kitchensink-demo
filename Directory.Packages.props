@@ -1,0 +1,20 @@
+<Project>
+  <ItemGroup>
+    <!-- CxO API clients, all on nuget.org -->
+    <PackageVersion Include="TmfApiClients" Version="9.21.0" />
+    <PackageVersion Include="ServiceActivationManagement.TmfApiClient" Version="1.2.0" />
+    <PackageVersion Include="ServiceOrderingEngineApiClient" Version="2.4.0" />
+
+    <!-- Workflow engine client, used by the workers -->
+    <PackageVersion Include="ConductorSharp.Engine" Version="4.4.1" />
+    <PackageVersion Include="ConductorSharp.Patterns" Version="4.4.1" />
+
+    <!-- Linking resource orders to the service order items that create them -->
+    <PackageVersion Include="CxO.ServiceOrderingEngine.Extensions" Version="0.2.0" />
+    <PackageVersion Include="ResourceOrderingEngineApiClient" Version="2.1.0" />
+
+    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.12" />
+    <PackageVersion Include="Microsoft.Extensions.Http" Version="10.0.12" />
+    <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="10.10.0" />
+  </ItemGroup>
+</Project>

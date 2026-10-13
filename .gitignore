@@ -1,0 +1,11 @@
+bin/
+obj/
+.vs/
+.idea/
+*.user
+
+# Ids written by the Acme CLI as it works through the guide
+acme-state.json
+
+# Local secrets
+.env
