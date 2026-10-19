@@ -21,6 +21,11 @@ run against your own CxO environment, and a second, larger one that builds on it
 Read the guide for the why; use this repository to run it, try changes, and copy from. Everything here calls CxO
 through the published CxO API clients on nuget.org, so the code is also a reference for calling CxO from .NET.
 
+## CxO versions
+
+The code on `main` works with **CxO 26w43**. Each git tag is named after the CxO release it works with (`26w43`,
+…); check out the tag that matches your environment's release.
+
 ## What is in the repository
 
 ```
@@ -64,10 +69,11 @@ sites, their service and resource specifications with catalog entries and workfl
 resources you run. Setup stops without changing anything if a service specification with one of the examples' names
 already exists and is not the example's.
 
-Get the code; every command below runs from the repository's root:
+Get the code for your CxO release (see [CxO versions](#cxo-versions)); every command below runs from the
+repository's root:
 
 ```bash
-git clone https://github.com/codaxy/cxo-kitchensink-demo.git
+git clone --branch 26w43 https://github.com/codaxy/cxo-kitchensink-demo.git
 cd cxo-kitchensink-demo
 ```
 
